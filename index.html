@@ -19,7 +19,7 @@
 
 			const cities = [];
 
-			const promise = fetch(endpoint);
+			fetch(endpoint).then(blob => console.log(blob));
 
 			console.log(promise);
 
