@@ -36,9 +36,13 @@
 				//set matchArray equal to the value returned from the findMatches function when the input is the value returned from the input field
 				const matchArray = findMatches(this.value, cities);
 				const html = matchArray.map(place => {
+					//look at the value the user entered and do not apply case sensitivity
+					const regex = new RegExp(this.value, 'gi');
+					//take the place.city and replace whatever value matches the regular expression with the value entered in a span tag with the hl class being applied to highlight the text
+					const cityName = place.city.replace(regex, `<span class="hl">${this.value}</span>`);
 					return `
 						<li>
-							<span class="name">${place.city}, ${place.state}</span>
+							<span class="name">${cityName}, ${place.state}</span>
 							<span class="growth">${place.growth_from_2000_to_2013}</span>
 							<span class="population">${place.population}</span>
 						</li>
