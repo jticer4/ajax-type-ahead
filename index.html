@@ -28,7 +28,7 @@
 					//Here we need to figure out if the city or state matches what was searched
 					//set regex to a regular expression equal to the word that were using to match and make sure that it matching globally and not using case sensativity
 					const regex = new RegExp(wordToMatch, 'gi');
-					return place.city.match(regex);
+					return place.city.match(regex) || place.state.match(regex);
 				});
 			}
 
