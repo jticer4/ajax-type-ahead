@@ -32,6 +32,10 @@
 				});
 			}
 
+			function numberWithCommas(x) {
+				return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+			}
+
 			function displayMatches() {
 				//set matchArray equal to the value returned from the findMatches function when the input is the value returned from the input field
 				const matchArray = findMatches(this.value, cities);
@@ -45,7 +49,7 @@
 						<li>
 							<span class="name">${cityName}, ${stateName}</span>
 							<span class="growth">${place.growth_from_2000_to_2013}</span>
-							<span class="population">${place.population}</span>
+							<span class="population">${numberWithCommas(place.population)}</span>
 						</li>
 					`;
 				}).join('');
